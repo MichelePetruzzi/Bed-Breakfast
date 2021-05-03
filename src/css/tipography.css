@@ -1,0 +1,10 @@
+/*
+  Per ogni dimensione del font definiamo una classe che setti la font-size di dimensione
+*/
+.font-size-1{
+	font-size: 20px;
+}
+
+.font-size-2{
+	font-size: 28px;
+}

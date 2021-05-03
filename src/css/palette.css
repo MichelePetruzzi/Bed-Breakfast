@@ -1,0 +1,24 @@
+/*
+  Qui dentro per ogni colore trovato nel figma dovrò scrivere 2 classi.
+  Torna utile usare qui dentro delle variabili globali.
+*/
+
+:root{
+	--color-1: #F0F8FF;
+}
+
+.text-color-1{
+	color: var(--color-1);
+}
+
+.bg-color-1{
+	background-color: var(--color-1); 
+}
+
+.text-color-2{
+	color: var(--color-2);
+}
+
+.bg-color-2{
+	color: var(--color-2);
+}
