@@ -1,15 +1,30 @@
+<?php
+
+session_start();
+include("db_conn.php");
+
+$username = $_POST["username"];
+$password = $_POST["password"];
+
+//Query
+$query = "SELECT * FROM `clienti` WHERE `Username` = '$username' AND `Password` = '$password'; ";
+
+//Risultato della query
+$result = $conn->query($query);
+
+?>
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
-	<!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="src/colors.css">
     <link rel="stylesheet" type="text/css" href="src/img">
-	<title>Login Utente</title>
+	<title>Area Utente</title>
 </head>
 <body background="puglia-alberobello.jpg" class="container-fluid">
 	<nav class="navbar navbar-expand-lg navbar-dark navbg-primary fixed-top bg-dark">
@@ -42,26 +57,24 @@
   </div>
 </nav>
 
-<!-- FORM -->
-<form action="area_login.php" method="POST" style="margin-top: 250px">
-    <h3 align="center"> Login Utente</h3>
-    <table align="center">
-        <tr>
-            <th>Username</th>
-            <td><input type="text" name="username" class="form-control" id="exampleInputUsername" maxlength="20"></td>
-        </tr>
-        <tr>
-            <th>Password</th>
-            <td><input type="password" name="password" class="form-control" id="exampleInputPassword1" minlength="4" maxlength="20"></td>
-        </tr>
-        <tr>
-            <td align="center" colspan="2">
-              <button type="submit" name="submit" class="btn btn-primary">Sign up</button>&nbsp
-              <button type="submit" name="login" class="btn btn-primary">Sign in</button>
-            </td>
-        </tr>
-    </table>
-</form>
+<div align="center" style="margin-top: 120px">
+	<?php
+    //Password_verify
+
+
+		if ($result->num_rows > 0) {
+		while ($row = $result->fetch_assoc()) {
+			echo "<h2>Buongiorno ".$row["Username"]."</h2><br>";
+		}
+		
+    
+		}
+		else{
+			echo "<br>NON vi sono utenti con queste credenziali.";
+    		header("Refresh: 2; url=index.php");
+		}
+	?>
+</div>
 
 </body>
 </html>

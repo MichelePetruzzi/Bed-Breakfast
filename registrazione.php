@@ -1,11 +1,3 @@
-<?php
-
-//session_start();
-
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -51,21 +43,30 @@
 </nav>
 
 <table align="center" border="0" bgcolor="#f0f8ff" style="border-radius: 10px 10px 10px 10px; margin-top: 115px;" width="350">
-  <form action="password.php" method="POST">
+  <form action="reg_cliente.php" method="POST">
   <div class="mb-3">
   <tr><td align="center" colspan="2"><h2>Registrazione Utente</h2></td></tr>
   <tr><td align="left"><b>Cognome</b></td><td><input type="text" name="cognome" style="border-radius: 5px 5px 5px 5px;"></td></tr>
   <tr><td align="left"><b>Nome</b></td><td><input type="text" name="nome" style="border-radius: 5px 5px 5px 5px;"></td></tr>
-  <tr><td align="left"><b>Codice Fiscale</b></td><td><input type="text" name="cod_fiscale" style="border-radius: 5px 5px 5px 5px;"></td></tr>
   <tr><td align="left"><b>Indirizzo</b></td><td><input type="text" name="indirizzo" style="border-radius: 5px 5px 5px 5px;"></td></tr>
   <tr><td align="left"><b>CAP</b></td><td><input type="number" name="cap" maxlength="5" style="border-radius: 5px 5px 5px 5px;"></td></tr>
-  <tr><td align="left"><b>Provincia</b></td><td><input type="text" name="provincia" style="border-radius: 5px 5px 5px 5px;"></td></tr>
+  <tr><td align="left"><b>Città</b></td><td><input type="text" name="citta" style="border-radius: 5px 5px 5px 5px;"></td></tr>
+  <tr><td align="left"><b>Provincia</b></td><td><input type="text" name="provincia" maxlength="2" style="border-radius: 5px 5px 5px 5px;"></td></tr>
   <tr><td align="left"><b>Comune</b></td><td><input type="text" name="comune" style="border-radius: 5px 5px 5px 5px;"></td></tr>
-  <tr><td align="left"><b>Telefono</b></td><td><input type="text" name="tell" placeholder="+(39)..." style="border-radius: 5px 5px 5px 5px;"></td></tr>
+  <tr><td align="left"><b>Nazione</b></td><td><input type="text" name="nazione" style="border-radius: 5px 5px 5px 5px;"></td></tr>
+  <tr><td align="left"><b>Telefono</b></td><td><input type="text" name="tell" maxlength="15" style="border-radius: 5px 5px 5px 5px;"></td></tr>s
+  <tr><td align="left"><b>Username</b></td><td><input type="text" name="username" style="border-radius: 5px 5px 5px 5px;"></td></tr>
   <tr><td align="left"><b>Email</b></td><td><input type="text" name="email" style="border-radius: 5px 5px 5px 5px;"></td></tr>
   <tr><td align="left"><b>Conferma E-mail*</b></td><td><input type="text" name="email_conf" style="border-radius: 5px 5px 5px 5px;"></td></tr>
   <tr><td align="left"><b>Password</b></td><td><input type="password" name="pwd" style="border-radius: 5px 5px 5px 5px;"></td></tr>
-  <tr><td align="left"><b>Conferma Password</b></td><td><input type="password" name="pwd2" style="border-radius: 5px 5px 5px 5px;"></td></tr>
+  <tr><td align="left"><b>Conferma Password</b></td><td><input type="password" name="pwd_conf" style="border-radius: 5px 5px 5px 5px;"></td></tr>
+  <tr><td align="left"><b>Codice Appartamento scelto</b></td>
+      <td>
+        <select name="id_appartamento">
+          <option value="110">110</option>
+          <option value="111">111</option>
+        </select>
+      </td></tr>
   <tr>
     <td colspan="2" align="center">
       <button type="reset" name="reset" class="btn btn-secondary" value="Annulla">Annulla</button>&nbsp
