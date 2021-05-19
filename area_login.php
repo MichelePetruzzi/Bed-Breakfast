@@ -2,15 +2,16 @@
 
 session_start();
 include("db_conn.php");
+error_reporting(0);
 
 $username = $_POST["username"];
 $password = $_POST["password"];
 
-//Query
-$query = "SELECT * FROM `clienti` WHERE `Username` = '$username' AND `Password` = '$password'; ";
+$_SESSION["username"] = $username;
+$_SESSION["password"] = $password;
 
-//Risultato della query
-$result = $conn->query($query);
+//Query
+$query = "SELECT * FROM `clienti` WHERE `Username` = '$username'; ";
 
 ?>
 
@@ -57,24 +58,65 @@ $result = $conn->query($query);
   </div>
 </nav>
 
-<div align="center" style="margin-top: 120px">
-	<?php
-    //Password_verify
+<div style="margin-top: 120px">
+  <?php
+  //Risultato della query
+  $result = $conn->query($query);
 
+  if ($result->num_rows > 0) {
 
-		if ($result->num_rows > 0) {
-		while ($row = $result->fetch_assoc()) {
-			echo "<h2>Buongiorno ".$row["Username"]."</h2><br>";
-		}
-		
-    
-		}
-		else{
-			echo "<br>NON vi sono utenti con queste credenziali.";
-    		header("Refresh: 2; url=index.php");
-		}
-	?>
+    while ($row = $result->fetch_assoc()) {
+      //$pwdH = password_hash($password, PASSWORD_DEFAULT);
+      //echo "<br>".$pwdH;
+      //echo $password."<br>";
+      $user = $row["Username"];
+      $pwdDB = $row["Password"];
+      //echo "<br><b>Username: </b>".$user."<br>";
+      //echo "<b>Password: </b>".$pwdDB."<br>";
+      //echo $localpwd."<br>";
+      //$pawd = (password_verify(password, hash);
+      if (password_verify($password, $pwdDB) == true) {
+        echo "<br><h2 align='center'>Welcom ".$row["Username"]."</h2><br>";
+        echo "<br>";
+
+        //Stampo le info da confermare
+        $query = "SELECT AF.`Check_in`, AF.`Check_out`, AF.`Num_Giorni`, AF.`Preventivo`, CL.`Nome`, CL.`Cognome`, CL.`Telefono` CL.`Credit_Card` FROM `affitti` AF, `clienti` CL WHERE AF.`ID_Cliente` = CL.`ID_Cliente` AND CL.`ID_Cliente` = 1 ";
+          
+          $result = $conn->query($query);
+
+          if ($result ->num_rows > 0) {
+            while($row = $result -> fetch_assoc()){
+              echo "<br>Nome: ".$row[Nome];
+              echo "<br>Cognome: ".$row[Cognome];
+              echo "<br>Data arrivo: ".$row[Check_in];
+              echo "<br>Data partenza: ".$row[Check_out];
+              echo "<br>Numero giorni: ".$row[Num_Giorni];
+              echo "<br>Prezzo: €".$row[Preventivo];
+              echo "<br>Telefono: ".$row[Telefono];
+              echo "<br>Carta di credito: ".$row[Credit_Card];
+            }
+          }
+
+        }
+        else{
+            echo "Password errata!";
+            echo " Refresh: 2; url=login.php ";
+        }
+
+        if ($row["ID_Appartamento"] == 110) {
+          echo "<table>";
+        echo "<img src='265231953.jpg' height='230' width='350' style='border-radius: 10px 10px 10px 10px;'>";
+      }
+      else{
+        echo "<img src='melavi2.jpeg' height='230' width='350' style='border-radius: 10px 10px 10px 10px;'>";
+      }
+     }
+    }
+    else{
+      echo "<div align='center'><br><h2>NON ci sono utenti con queste credenziali.</h2></div>";
+        header("Refresh: 2; url=login.php");
+    }
+  ?>
 </div>
-
 </body>
 </html>

@@ -33,13 +33,8 @@ $query = "CREATE TABLE IF NOT EXISTS proprietari(
 	ID_Proprietario INT(3) NOT NULL AUTO_INCREMENT,
 	Cognome VARCHAR(30) NOT NULL,
 	Nome VARCHAR(30) NOT NULL,
-	LuogoNascita VARCHAR(30) NOT NULL,
-	Indirizzo VARCHAR(30) NOT NULL,
-	CAP INT(5) NOT NULL,
-	Citta VARCHAR(30) NOT NULL,
 	Telefono VARCHAR(15) NOT NULL,
 	Email VARCHAR(30) NOT NULL,
-	ID_Appartamento INT(3) NOT NULL,
 	PRIMARY KEY (ID_Proprietario)
 	) Engine = InnoDB; ";
 
@@ -55,11 +50,9 @@ else {
 $query = "CREATE TABLE IF NOT EXISTS appartamenti(
 	ID_Appartamento INT(3) NOT NULL AUTO_INCREMENT,
 	Indirizzo VARCHAR(30) NOT NULL,
-	CAP INT(5) NOT NULL,
-	Citta VARCHAR(30) NOT NULL,
-	Provincia VARCHAR(2) NOT NULL,
+	ID_ComuneApp INT(3) NOT NULL,
 	Prezzo double NOT NULL,
-	Descrizione VARCHAR(40) NOT NULL,
+	Descrizione VARCHAR(100) NOT NULL,
 	ID_Proprietario INT(3) NOT NULL,
 	PRIMARY KEY (ID_Appartamento)
 	) Engine = InnoDB; ";
@@ -77,17 +70,14 @@ $query = "CREATE TABLE IF NOT EXISTS clienti(
 	ID_Cliente INT(3) NOT NULL AUTO_INCREMENT,
 	Cognome VARCHAR(30) NOT NULL,
 	Nome VARCHAR(30) NOT NULL,
-	LuogoNascita VARCHAR(30) NOT NULL,
 	Indirizzo VARCHAR(30) NOT NULL,
-	CAP INT(5) NOT NULL,
-	Citta VARCHAR(30) NOT NULL,
-	Provincia VARCHAR(2) NOT NULL,
-	Comune VARCHAR(30) NOT NULL,
-	Nazione VARCHAR(40) NOT NULL,
+	ID_Comune INT(3) NOT NULL,
 	Telefono VARCHAR(15) NOT NULL,
 	Email VARCHAR(30) NOT NULL,
 	Username VARCHAR(30) NOT NULL,
-	Password VARCHAR(99) NOT NULL,
+	Password VARCHAR(256) NOT NULL,
+	Credit_Card VARCHAR(19) NOT NULL,
+	ID_Appartamento INT(3) NOT NULL,
 	PRIMARY KEY (ID_Cliente)
 	) Engine = InnoDB; ";
 
@@ -116,6 +106,24 @@ if($conn->query($query)){
 }
 else {
 	die("Errore nella creazione della tabella 'appartamenti'.<br>");
+	$conn->close();
+}
+
+//Creazione della tabella comuni
+$query = "CREATE TABLE IF NOT EXISTS comuni(
+	ID_Comune INT(3) NOT NULL AUTO_INCREMENT,
+	Comune VARCHAR(35) NOT NULL,
+	Provincia VARCHAR(2) NOT NULL,
+	Nazione VARCHAR(35) NOT NULL,
+	PRIMARY KEY (ID_Comune)
+	) Engine = InnoDB; ";
+
+if($conn->query($query)){
+	//echo "<i>Tabella 'comuni' creata correttamente.</i><br>";
+	echo "<h2 align='center'>Caricamento.....</h2>";
+}
+else {
+	die("Errore nella creazione della tabella 'comuni'.<br>");
 	$conn->close();
 }
 

@@ -17,6 +17,17 @@ $_SESSION["partenza"] = $partenza;
 $_SESSION["adulti"] = $adulti;
 $_SESSION["bambini"] = $bambini;
 
+$arrivo = $_SESSION["arrivo"];
+$partenza = $_SESSION["partenza"];
+
+/*
+echo "<br><br><br><br><br>".$localita;
+echo "<br>".$arrivo;
+echo "<br>".$partenza;
+echo "<br>".$adulti;
+echo "<br>".$bambini;
+*/
+
 //Calcolo data prezzo
 $arrivo = new DateTime(implode("-", array_reverse(explode("/", $_POST["arrivo"]))));
 $partenza = new DateTime(implode("-", array_reverse(explode("/", $_POST["partenza"]))));
@@ -30,14 +41,6 @@ $prezzo = 130;       //prezzo affitto
 $_SESSION["$prezzo"] = $prez;
 
 $prezzoPers = 40;   //prezzo a persona
-
-/*
-$_SESSION["dove"] = $localita;
-$_SESSION["arrivo"] = $arrivo;
-$_SESSION["partenza"] = $partenza;
-$_SESSION["adulti"] = $adulti;
-$_SESSION["bambini"] = $bambini;
-*/
 
 ?>
 
@@ -86,7 +89,7 @@ $_SESSION["bambini"] = $bambini;
 </nav>
 
 <!-- Inizio 1° appartamento -->
-<div style="margin-left: 30px; margin-top: 120px;">
+<div style="margin-left: 30px; margin-top: 110px;">
   <table bgcolor="#fffff0" border="0" style="border-radius: 10px 10px 10px 10px;">
     <tr>
       <td>
@@ -193,7 +196,7 @@ $_SESSION["bambini"] = $bambini;
         </div>
       </td>
     </tr>
-    <form action="registrazione.php" method="POST" name="prenota_subito">
+    <form action="login.php" method="POST" name="prenota_subito">
     <tr>
       <td>
         <button type="submit" id="110" name="prenota" class="btn btn-primary" value="Prenota subito">Prenota subito</button>
@@ -340,7 +343,7 @@ $_SESSION["bambini"] = $bambini;
         </div>
       </td>
     </tr>
-    <form action="registrazione.php" method="POST" name="prenota_subito">
+    <form action="login.php" method="POST" name="prenota_subito">
     <tr>
       <td>
         <button type="submit" id="111" name="prenota" class="btn btn-primary" value="Prenota subito">Prenota subito</button>

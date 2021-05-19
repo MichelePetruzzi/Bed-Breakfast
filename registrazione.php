@@ -49,17 +49,14 @@
   <tr><td align="left"><b>Cognome</b></td><td><input type="text" name="cognome" style="border-radius: 5px 5px 5px 5px;"></td></tr>
   <tr><td align="left"><b>Nome</b></td><td><input type="text" name="nome" style="border-radius: 5px 5px 5px 5px;"></td></tr>
   <tr><td align="left"><b>Indirizzo</b></td><td><input type="text" name="indirizzo" style="border-radius: 5px 5px 5px 5px;"></td></tr>
-  <tr><td align="left"><b>CAP</b></td><td><input type="number" name="cap" maxlength="5" style="border-radius: 5px 5px 5px 5px;"></td></tr>
-  <tr><td align="left"><b>Città</b></td><td><input type="text" name="citta" style="border-radius: 5px 5px 5px 5px;"></td></tr>
-  <tr><td align="left"><b>Provincia</b></td><td><input type="text" name="provincia" maxlength="2" style="border-radius: 5px 5px 5px 5px;"></td></tr>
-  <tr><td align="left"><b>Comune</b></td><td><input type="text" name="comune" style="border-radius: 5px 5px 5px 5px;"></td></tr>
-  <tr><td align="left"><b>Nazione</b></td><td><input type="text" name="nazione" style="border-radius: 5px 5px 5px 5px;"></td></tr>
+  <tr><td align="left"><b>ID_Comune</b></td><td><input type="number" name="id_comune" maxlength="5" style="border-radius: 5px 5px 5px 5px;"></td></tr>
   <tr><td align="left"><b>Telefono</b></td><td><input type="text" name="tell" maxlength="15" style="border-radius: 5px 5px 5px 5px;"></td></tr>s
   <tr><td align="left"><b>Username</b></td><td><input type="text" name="username" style="border-radius: 5px 5px 5px 5px;"></td></tr>
   <tr><td align="left"><b>Email</b></td><td><input type="text" name="email" style="border-radius: 5px 5px 5px 5px;"></td></tr>
   <tr><td align="left"><b>Conferma E-mail*</b></td><td><input type="text" name="email_conf" style="border-radius: 5px 5px 5px 5px;"></td></tr>
   <tr><td align="left"><b>Password</b></td><td><input type="password" name="pwd" style="border-radius: 5px 5px 5px 5px;"></td></tr>
   <tr><td align="left"><b>Conferma Password</b></td><td><input type="password" name="pwd_conf" style="border-radius: 5px 5px 5px 5px;"></td></tr>
+  <tr><td align="left"><b>Carta di Credito</b></td><td><input type="text" name="credit_card" style="border-radius: 5px 5px 5px 5px;"></td></tr>
   <tr><td align="left"><b>Codice Appartamento scelto</b></td>
       <td>
         <select name="id_appartamento">
