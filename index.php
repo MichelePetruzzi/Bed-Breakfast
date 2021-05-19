@@ -20,7 +20,7 @@ include("db_conn.php");
     <title>www.b&bpuglia.com</title>
  </head>
  <body background="puglia-alberobello.jpg" class="container-fluid">
-    <!--<div class="hello">
+<!--<div class="hello">
 		<h1 align="center"> </h1>
 	</div> -->
 <!-- ------------------------------------------------------------------------------- -->
@@ -77,7 +77,7 @@ include("db_conn.php");
         <td colspan="2">
             <div class="col">
                 <label>Trova nelle vicinanze</label><br>
-                <input type="text" name="dove" class="form-control" style="width: 100%" placeholder="Dove" aria-label="dove">
+                <input type="text" name="dove" placeholder="Fasano (BR)" value="Fasano" class="form-control" style="width: 100%" placeholder="Dove" aria-label="dove">
             </div>
         </td>
     </tr>
@@ -221,70 +221,9 @@ include("db_conn.php");
     </tr>
 </table>
 
-<!--
-  
-<div id="carouselExampleInterval" align="center" style="width: 70%" style="height: 70%" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active" data-bs-interval="5000">
-      <img src="mare.jpg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item" data-bs-interval="3000">
-      <img src="Riviera-Maya.jpg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item" data-bs-interval="3000">
-      <img src="balconi-fioriti-locorotondo.jpg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item" data-bs-interval="3000">
-      <img src="Puglia.jpg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item" data-bs-interval="3000">
-      <img src="85f10849c4.jpg" class="d-block w-100" alt="...">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
- </div>
+<!-- Optional JavaScript; choose one of the two! -->
 
--->
-
-  <!-- <br><br><br><br>
-<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="mare.jpg" class="d-block w-100" alt="Mountain View">
-    </div>
-    <div class="carousel-item">
-      <img src="Riviera-Maya.jpg" class="d-block w-100" alt="Mountain View">
-    </div>
-    <div class="carousel-item">
-      <img src="puglia-alberobello.jpg" class="d-block w-100" alt="Mountain View">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div> -->
-
-
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
+  <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 
     <script type="text/javascript" src="dist/libs.min.js"></script>

@@ -56,9 +56,12 @@
         </tr>
         <tr>
             <td align="center" colspan="2">
-              <button type="submit" name="submit" class="btn btn-primary">Sign up</button>&nbsp
-              <button type="submit" name="login" class="btn btn-primary">Sign in</button>
+              <button type="reset" name="reset" class="btn btn-primary">Annulla</button>&nbsp
+              <button type="submit" name="login" class="btn btn-primary">Login</button>
             </td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center"><a href="registrazione.php">Clicca qui se accedi per la prima volta</a></td>
         </tr>
     </table>
 </form>
