@@ -10,12 +10,33 @@
     <link rel="stylesheet" type="text/css" href="src/colors.css">
     <link rel="stylesheet" type="text/css" href="src/img">
 	<title>Login Utente</title>
+
+  <!-- Controlli campi form Login -->
+  <script type="text/javascript">
+    function valida_form_login() {
+     var username = document.login.username.value;
+     var password = document.login.password.value;
+
+      //Controllo se il campo è vuoto
+      if (username == "") {
+        alert("Attenzione! Non hai inserito Username");
+          document.getElementById('username').focus();
+      }
+
+      if (password == "") {
+        alert("Attenzione! Non hai inserito la Password");
+          document.getElementById('password').focus();
+      }
+
+    }
+  </script>
+
 </head>
-<body background="puglia-alberobello.jpg" class="container-fluid">
+<body background="src/img/puglia-alberobello.jpg" style="background-attachment: fixed;" class="container-fluid">
 	<nav class="navbar navbar-expand-lg navbar-dark navbg-primary fixed-top bg-dark">
   <div class="container-fluid">
-    <img src="bed-and-breakfast.png" align="left" width="150" height="85" alt="b&b">
-    <a class="navbar-brand" href="#">&nbsp&nbsp B&B in Puglia</a>
+    <img src="src/img/bed-and-breakfast.png" align="left" width="150" height="85" alt="b&b">
+    <a class="navbar-brand" href="#">&nbsp&nbsp B&B Puglia</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -43,21 +64,24 @@
 </nav>
 
 <!-- FORM -->
-<form action="area_login.php" method="POST" style="margin-top: 250px">
+<form action="area_login.php" method="POST" name="login" style="margin-top: 250px">
+    <div align="center">
+      <img src="src/img/78146445.jpg" alt="User" width="50" height="55">
+    </div>
     <h3 align="center"> Login Utente</h3>
     <table align="center">
         <tr>
             <th>Username</th>
-            <td><input type="text" name="username" class="form-control" id="exampleInputUsername" maxlength="20"></td>
+            <td><input type="text" name="username" id="username" class="form-control" id="exampleInputUsername" maxlength="20"></td>
         </tr>
         <tr>
             <th>Password</th>
-            <td><input type="password" name="password" class="form-control" id="exampleInputPassword1" minlength="4" maxlength="20"></td>
+            <td><input type="password" name="password" id="password" class="form-control" id="exampleInputPassword1" minlength="4" maxlength="20"></td>
         </tr>
         <tr>
             <td align="center" colspan="2">
               <button type="reset" name="reset" class="btn btn-primary">Annulla</button>&nbsp
-              <button type="submit" name="login" class="btn btn-primary">Login</button>
+              <button type="submit" name="login" onclick="valida_form_login()" class="btn btn-primary">Login</button>
             </td>
         </tr>
         <tr>
