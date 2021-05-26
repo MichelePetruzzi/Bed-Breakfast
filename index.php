@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 include("db_conn.php");
 
@@ -19,7 +18,7 @@ include("db_conn.php");
     
     <title>www.b&bpuglia.com</title>
  </head>
- <body background="puglia-alberobello.jpg" class="container-fluid">
+ <body background="src/img/puglia-alberobello.jpg" class="container-fluid" style="background-attachment: fixed;">
 <!--<div class="hello">
 		<h1 align="center"> </h1>
 	</div> -->
@@ -36,15 +35,15 @@ include("db_conn.php");
 
 <nav class="navbar navbar-expand-lg navbar-dark navbg-primary fixed-top bg-dark">
   <div class="container-fluid">
-  	<img src="bed-and-breakfast.png" align="left" width="150" height="85" alt="b&b">
-    <a class="navbar-brand" href="#">&nbsp&nbsp B&B in Puglia</a>
+  	<img src="src/img/bed-and-breakfast.png" align="left" width="150" height="85" alt="b&b">
+    <a class="navbar-brand">&nbsp&nbsp B&B Puglia</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.html">&nbsp Home</a>
+          <a class="nav-link active" aria-current="page" href="index.php">&nbsp Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" href="visita_puglia.php">Visita la Puglia</a>
@@ -66,11 +65,14 @@ include("db_conn.php");
 
 <br><br><br>
 
-<table align="center" style="margin-top: 90px">
+<div align="center" style="margin-top: 50px">
+  <marquee><h4 align="center"style="shape-rendering: 20px"><font color="green">BENVENUTO SULLA</font><font color="white"> RECEPTION AUTOMATICA </font><font color="red">BED&BREAKFAST IN PUGLIA</font></h4></marquee>
+</div>
+<table align="center" style="margin-top: 60px">
     <form action="visita_puglia.php" method="POST" name="cerca_b&b" class="row g-3">
     <tr>
         <td colspan="2">
-            <h3 align="center" style="shape-rendering: 20px">Trova un alloggio in Puglia</h3>
+            <h5 align="center">Trova un alloggio adatto per te:</h5>
         </td>
     </tr>
     <tr>
@@ -143,7 +145,7 @@ include("db_conn.php");
         </tr>
     </table>
 </form> -->
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 <table>
   <thead>
@@ -162,37 +164,37 @@ include("db_conn.php");
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active" data-bs-interval="5000">
-      <img src="mare.jpg" class="d-block w-100" style="border-radius: 10px 10px 10px 10px;" alt="...">
+      <img src="src/img/mare.jpg" class="d-block w-100" style="border-radius: 10px 10px 10px 10px;" alt="...">
       <div class="carousel-caption d-none d-md-block">
-        <h5>Visita le nostre città Pugliesi</h5>
+        <h5>Visita le nostre belle città Pugliesi</h5>
         <p>Some representative placeholder content for the first slide.</p>
       </div>
     </div>
     <div class="carousel-item" data-bs-interval="3000">
-      <img src="Riviera-Maya.jpg" class="d-block w-100" style="border-radius: 10px 10px 10px 10px;" alt="...">
+      <img src="src/img/Riviera-Maya.jpg" class="d-block w-100" style="border-radius: 10px 10px 10px 10px;" alt="...">
       <div class="carousel-caption d-none d-md-block">
-        <h5>Fai la tua vacanza nei residence migliore della Puglia</h5>
+        <h5>Fai la tua vacanza nei residence migliori di Puglia</h5>
         <p>Some representative placeholder content for the second slide.</p>
       </div>
     </div>
     <div class="carousel-item" data-bs-interval="3000">
-      <img src="balconi-fioriti-locorotondo.jpg" class="d-block w-100" style="border-radius: 10px 10px 10px 10px;" alt="...">
+      <img src="src/img/balconi-fioriti-locorotondo.jpg" class="d-block w-100" style="border-radius: 10px 10px 10px 10px;" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h5>Visita le città tipiche della Puglia</h5>
         <p>Some representative placeholder content for the third slide.</p>
       </div>
     </div>
     <div class="carousel-item" data-bs-interval="3000">
-      <img src="Puglia.jpg" class="d-block w-100" style="border-radius: 10px 10px 10px 10px;" alt="...">
+      <img src="src/img/Puglia.jpg" class="d-block w-100" style="border-radius: 10px 10px 10px 10px;" alt="...">
       <div class="carousel-caption d-none d-md-block">
-        <h5>Vedrai i tramonti meravigliosi</h5>
+        <h5>Vedrai tramonti meravigliosi</h5>
         <p>Some representative placeholder content for the third slide.</p>
       </div>
     </div>
     <div class="carousel-item" data-bs-interval="3000">
-      <img src="85f10849c4.jpg" class="d-block w-100" style="border-radius: 10px 10px 10px 10px;" alt="...">
+      <img src="src/img/85f10849c4.jpg" class="d-block w-100" style="border-radius: 10px 10px 10px 10px;" alt="...">
       <div class="carousel-caption d-none d-md-block">
-        <h5>Fai una passeggiata di sera</h5>
+        <h5>Regalati una passeggiata serale</h5>
         <p>Some representative placeholder content for the third slide.</p>
       </div>
     </div>
@@ -215,9 +217,9 @@ include("db_conn.php");
 
 <table align="center">
     <tr>
-        <td><img src="fasano-puglia.jpg" class="rounded float-start" height="250" width="500" style="border-radius: 10px 10px 10px 10px;" style="padding: 2px"></td>
-        <td><img src="115566073.jpg" class="rounded mx-auto d-block" height="250" width="500" style="border-radius: 10px 10px 10px 10px;" style="padding: 2px"></td>
-        <td><img src="DSCF4354.jpg" class="rounded float-end" height="250" width="500" style="border-radius: 10px 10px 10px 10px;" style="padding: 2px"></td>
+        <td><img src="src/img/fasano-puglia.jpg" class="rounded float-start" height="250" width="500" style="border-radius: 10px 10px 10px 10px;" style="padding: 2px"></td>
+        <td><img src="src/img/115566073.jpg" class="rounded mx-auto d-block" height="250" width="500" style="border-radius: 10px 10px 10px 10px;" style="padding: 2px"></td>
+        <td><img src="src/img/DSCF4354.jpg" class="rounded float-end" height="250" width="500" style="border-radius: 10px 10px 10px 10px;" style="padding: 2px"></td>
     </tr>
 </table>
 

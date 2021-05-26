@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 include("db_conn.php");
 error_reporting(0);
@@ -7,11 +6,8 @@ error_reporting(0);
 $username = $_POST["username"];
 $password = $_POST["password"];
 
-$_SESSION["username"] = $username;
-$_SESSION["password"] = $password;
-
 //Query
-$query = "SELECT * FROM `clienti` WHERE `Username` = '$username'; ";
+$query = "SELECT `Username_Cliente`, `Password` FROM `clienti` WHERE `Username_Cliente` = '$username'; ";
 
 ?>
 
@@ -27,10 +23,10 @@ $query = "SELECT * FROM `clienti` WHERE `Username` = '$username'; ";
     <link rel="stylesheet" type="text/css" href="src/img">
 	<title>Area Utente</title>
 </head>
-<body background="puglia-alberobello.jpg" class="container-fluid">
+<body background="src/img/puglia-alberobello.jpg" style="background-attachment: fixed;" class="container-fluid">
 	<nav class="navbar navbar-expand-lg navbar-dark navbg-primary fixed-top bg-dark">
   <div class="container-fluid">
-    <img src="bed-and-breakfast.png" align="left" width="150" height="85" alt="b&b">
+    <img src="src/img/bed-and-breakfast.png" align="left" width="150" height="85" alt="b&b">
     <a class="navbar-brand" href="#">&nbsp&nbsp B&B in Puglia</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -66,57 +62,79 @@ $query = "SELECT * FROM `clienti` WHERE `Username` = '$username'; ";
   if ($result->num_rows > 0) {
 
     while ($row = $result->fetch_assoc()) {
-      //$pwdH = password_hash($password, PASSWORD_DEFAULT);
-      //echo "<br>".$pwdH;
       //echo $password."<br>";
-      $user = $row["Username"];
+      $user = $row["Username_Cliente"];
       $pwdDB = $row["Password"];
       //echo "<br><b>Username: </b>".$user."<br>";
-      //echo "<b>Password: </b>".$pwdDB."<br>";
-      //echo $localpwd."<br>";
-      //$pawd = (password_verify(password, hash);
+      //echo "<b>Password da te inserita: </b>".$password."<br>";
+      //echo "<b>Password nel DB: </b>".$pwdDB."<br>";
       if (password_verify($password, $pwdDB) == true) {
-        echo "<br><h2 align='center'>Welcom ".$row["Username"]."</h2><br>";
-        echo "<br>";
+          echo "<br><h2 align='center'>Welcome ".$row[Username_Cliente]."</h2><br>";
+          //echo "<br>Password: ".$row[Password]."<br>";
+          $_SESSION["username"]=$username;
+          $_SESSION["logged"]=true;
 
-        //Stampo le info da confermare
-        $query = "SELECT AF.`Check_in`, AF.`Check_out`, AF.`Num_Giorni`, AF.`Preventivo`, CL.`Nome`, CL.`Cognome`, CL.`Telefono` CL.`Credit_Card` FROM `affitti` AF, `clienti` CL WHERE AF.`ID_Cliente` = CL.`ID_Cliente` AND CL.`ID_Cliente` = 1 ";
+          //Query stampa 4 tabelle
+          $sql = "SELECT Cli.*, Com.*, App.*, Aff.* FROM `clienti` Cli, `comuni` Com, `appartamenti` App, `affitti` Aff WHERE Cli.ID_ComuneCli = Com.ID_Comune AND App.ID_Appartamento = Aff.ID_Appartamento AND Cli.`Username_Cliente` = Aff.`Username_Cliente`";
           
-          $result = $conn->query($query);
+          $result_sql = $conn->query($sql);
+          
+          if ($result_sql->num_rows>0) {
 
-          if ($result ->num_rows > 0) {
-            while($row = $result -> fetch_assoc()){
-              echo "<br>Nome: ".$row[Nome];
-              echo "<br>Cognome: ".$row[Cognome];
-              echo "<br>Data arrivo: ".$row[Check_in];
-              echo "<br>Data partenza: ".$row[Check_out];
-              echo "<br>Numero giorni: ".$row[Num_Giorni];
-              echo "<br>Prezzo: €".$row[Preventivo];
-              echo "<br>Telefono: ".$row[Telefono];
-              echo "<br>Carta di credito: ".$row[Credit_Card];
-            }
-          }
-
+          $row = $result_sql->fetch_assoc();
+              
+          echo "<table bgcolor='#fffff0' style='border-radius: 10px 10px 10px 10px;'>";
+          echo "<tr><td>";
+          echo "<table style='margin-left: 60px' bgcolor='#fffff0' style='border-radius: 10px 10px 10px 10px;'>";
+          echo "<tr><td align='left' colspan='2'><h4>I tuoi dati:</h4></td></tr>";
+          echo "<tr><td><b>Nome </b></td><td>".$row[Nome]."</td></tr>";
+          echo "<tr><td><b>Cognome </b></td><td>".$row[Cognome]."</td></tr>";
+          echo "<tr><td><b>Indirizzo dell'appartamento </b></td><td>"." ".$row[Toponimo]." ".$row[Nome_via]." ".$row[Civico]."</td></tr>";
+          echo "<tr><td><b>Comune </b></td><td>".$row[Comune]."</td></tr>";
+          echo "<tr><td><b>Provincia </b></td><td>".$row[Provincia]."</td></tr>";
+          echo "<tr><td><b>Nazione </b></td><td>".$row[Nazione]."</td></tr>";
+          echo "<tr><td><b>Codice Appartamento </b></td><td>".$row[ID_Appartamento]."</td></tr>";
+          echo "<tr><td><b>Importo </b></td><td>€ ".$row[Importo]."</td></tr>";
+          echo "<tr><td><b>Data inizio pren. </b></td><td>".$row[Check_in]."</td></tr>";
+          echo "<tr><td><b>Data scadenza pren. </b></td><td>".$row[Check_out]."</td></tr>";
+          echo "<tr><td><b>Email </b></td><td>".$row[Email]."</td></tr>";
+          echo "<tr><td><b>Telefono </b></td><td>".$row[Telefono]."</td></tr>";
+          echo "<tr><td><b>Numero carta di credito </b></td><td>".$row[Num_CreditCard]."</td></tr>";
+          echo "<tr><td><b>Circuito carta di credito </b></td><td>".$row[Tipo_CreditCard]."</td></tr>";
+          echo "</table>";
+          echo "</td>";
+          echo "<td align='center'><img src='src/img/110_1.jpg' height='490' width='520' style='border-radius: 10px 10px 10px 10px;'></td>";
+          echo "</tr></table>";
         }
-        else{
-            echo "Password errata!";
-            echo " Refresh: 2; url=login.php ";
-        }
-
-        if ($row["ID_Appartamento"] == 110) {
-          echo "<table>";
-        echo "<img src='265231953.jpg' height='230' width='350' style='border-radius: 10px 10px 10px 10px;'>";
       }
       else{
-        echo "<img src='melavi2.jpeg' height='230' width='350' style='border-radius: 10px 10px 10px 10px;'>";
+        echo "<h4 align='center'>Password errata</h4>";
+        $_SESSION["username"]="";
+        $_SESSION["logged"]=false;
+        //echo "Username: ".$user."<br>Password: ".$password."<br>";
+        header("Refresh: 3; url=login.php");
       }
-     }
-    }
-    else{
-      echo "<div align='center'><br><h2>NON ci sono utenti con queste credenziali.</h2></div>";
-        header("Refresh: 2; url=login.php");
-    }
-  ?>
+      /*if ($password == $row[Password]) {
+        echo "<br><h2 align='center'>Welcom ".$row[Username_Cliente]."</h2><br>";
+        echo "<br>Password: ".$row[Password]."<br>";
+      }
+      else{
+        echo "<h4 align='center'>Password errata</h4>";
+        header("Refresh: 3; url=login.php");
+      }*/
+  }
+}
+else{
+  echo "<div align='center'><br><h4>NON ci sono utenti con queste credenziali.</h4></div>";
+  header("Refresh: 2; url=login.php");
+}
+?>
 </div>
+
+<br><br><br><br><br>
+<form action='logout.php' method='POST'>
+  <button type="submit" name="logout" value="Logout">Esci dal login</button>
+</form>
+
 </body>
 </html>
